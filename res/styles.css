@@ -1,0 +1,33 @@
+body {
+	font: 10pt Arial;
+	color: #DDD;
+	background-color: #222;
+}
+a, a:link, a:active, a:visited {
+	color: #4080FF;
+	text-decoration: none;
+}
+textarea {
+	width: 100%;
+	box-sizing: border-box;
+	height: 300px;
+	font: 10pt Consolas;
+	clear: left;
+	background-color: black;
+	color: #00FF00;
+	box-shadow: 0 0 10px 4px #002000;
+}
+video {
+	float: left;
+	margin-right: 1em;
+}
+dl dt {
+	font-style: italic
+}
+dl dd {
+	padding-left: 1em;
+	margin: 0;
+}
+div.instruction {
+	float: left;
+}

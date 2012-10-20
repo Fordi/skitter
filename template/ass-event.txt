@@ -1,0 +1,4 @@
+Dialogue: 0,%start%,%end%,AnimeName, NTP,0000,0000,0000,,%animeName%
+Dialogue: 0,%start%,%end%,SongName, NTP,0000,0000,0000,,%songName%
+Dialogue: 0,%start%,%end%,SongArtist, NTP,0000,0000,0000,,%songArtist%
+Dialogue: 0,%start%,%end%,Editor, NTP,0000,0000,0000,,%editor%

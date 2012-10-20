@@ -1,0 +1,22 @@
+[Script Info]
+Title: %title%
+Original Script: %author%
+ScriptType: v4.00+
+Collisions: Normal
+PlayResY: %height%
+Timer: 100,0000
+Video Aspect Ratio: %aspect%
+Video Zoom: 1
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: AnimeName, Arial,16,&H00FCFCFC,&H00FCFCFC,&H00000008,&H80000008,-1,0,0,0,100,100,0.00,0.00,1,1.00,2.00,1,16,30,60,0
+Style: SongName, Arial,16,&H00B4FCFC,&H00B4FCFC,&H00000008,&H80000008,0,-1,0,0,100,100,0.00,0.00,1,1.00,2.00,1,16,0,44,0
+Style: SongArtist, Arial,14,&H00B4FCFC,&H00B4FCFC,&H00000008,&H80000008,0,0,0,0,100,100,0.00,0.00,1,1.00,2.00,1,16,0,30,0
+Style: Editor, Arial,14,&H00B4FCFC,&H00B4FCFC,&H00000008,&H80000008,0,-1,0,0,100,100,0.00,0.00,1,1.00,2.00,1,16,0,16,0
+
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginR, MarginL, MarginV, Effect, Text
+%events%

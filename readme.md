@@ -5,9 +5,7 @@ A simple webapp for creating skit titles to video.
 
 This project was specifically for AMV Hell; I got tired of running back to the site anytime I wanted to see what this anime or that sound clip was.
 
-It must be run from a webserver, preferably a light one.  Also, you'll need to get a copy of jquery in here.
-
-Once that stuff is done, modify config.js appropriately and open index.html in your browser.  Instructions are right there.
+It must be run from a webserver, preferably a light one.  Once that's done, modify config.js appropriately and open index.html in your browser.  Instructions are right there.
 
 Why ASS?
 --------

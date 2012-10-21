@@ -44,7 +44,9 @@
 			var i, obj = {},
 				cols = $(this).find(skitter.config.skitColumnSelector);
 			for (i = 0; i < colNames.length; i += 1) {
-				obj[colNames[i]] = cols.eq(i).text() || cols.get(i).nodeValue;
+				if (cols.get(i)) {
+					obj[colNames[i]] = cols.eq(i).text() || cols.get(i).nodeValue;
+				}
 			}
 			skitter.skits.push(obj);
 		});
@@ -85,7 +87,7 @@
 	};
 	skitter.updateSubLink = function updateSubLink() {
 		skitter.subLink.attr({
-			href: 'data:application/octet-stream;base64,' + global.btoa(skitter.fileOutput)
+			href: 'data:application/octet-stream;base64,' + global.btoa(unescape(escape(skitter.fileOutput).replace(/%u(\d{4})/g, '&#x$1;')))
 		});
 	};
 	skitter.updateApplication = function updateApplication() {

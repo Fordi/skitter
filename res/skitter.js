@@ -69,13 +69,20 @@
 	skitter.storeEvents = function storeEvents() {
 		localStorage.setItem('skitter-cache', JSON.stringify(skitter.events));
 	};
+	skitter.processEvent = function processEvent(index) {
+		var event = $.extend({}, skitter.events[index]),
+			next = skitter.events[index + 1] || {};
+		event.start = skitter.formatStamp(event.stamp);
+		event.end = skitter.formatStamp(Math.min(event.stamp + 5, next.stamp || Infinity));
+		return event;
+	};
 	skitter.renderOutput = function renderOutput() {
 		skitter.fileOutput = skitter.interpolate(
 			skitter.subTemplate,
 			$.extend({
-				events: $(skitter.events).map(function () {
-					return skitter.interpolate(skitter.eventTemplate, this);
-				}).toArray().join("\r\n")
+				events: skitter.events.map(function (event, index) {
+					return skitter.interpolate(skitter.eventTemplate, skitter.processEvent(index));
+				}).join("\r\n")
 			}, skitter.config)
 		);
 		return skitter.fileOutput;
@@ -83,7 +90,7 @@
 	skitter.updateSubDisplay = function updateSubDisplay() {
 		skitter.subDisplay.html(skitter.fileOutput);
 		skitter.subDisplay[0].scrollTop = skitter.subDisplay[0].scrollHeight;
-		skitter.subDisplay.outerHeight($(global.window).innerHeight() - skitter.subDisplay.offset().top - 16);
+		//skitter.subDisplay.outerHeight($(global.window).innerHeight() - skitter.subDisplay.offset().top - 16);
 	};
 	skitter.updateSubLink = function updateSubLink() {
 		skitter.subLink.attr({
@@ -101,7 +108,7 @@
 			readyToPlay = new $.Deferred();
 		skitter.loadStoredEvents();			
 		skitter.vid = $('video.skitter')[0];
-		skitter.subDisplay = $('textarea.assFile');
+		skitter.subDisplay = $('pre.assFile');
 		skitter.subLink = $('a.download').attr({
 			download: skitter.config.video.replace(/^.*\/([^\/]+)$/, '$1').replace(/\.[^\.]+$/, '.ass')
 		})
@@ -152,14 +159,9 @@
 		SPACE: 32
 	};
 	skitter.next = function next() {
-		var start = skitter.formatStamp(skitter.vid.currentTime),
-			end = skitter.formatStamp(skitter.vid.currentTime + 5);
+		var start = skitter.vid.currentTime;
 		skitter.events.push($.extend(
-			{
-				stamp: skitter.vid.currentTime,
-				start: start,
-				end: end
-			},
+			{ stamp: skitter.vid.currentTime },
 			skitter.skits[skitter.currentSkit]
 		));
 		skitter.currentSkit += 1;
